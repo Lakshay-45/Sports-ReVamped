@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+
+{% block main %}
+
+    <form action="/institute-login" method="post">
+
+        <h3 class="black">Institute Login</h3>
+
+        <div class="mb-3">
+            <input autocomplete="off" required autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Institute Code" type="text">
+        </div>
+
+        <div class="mb-3">
+            <input autocomplete="off" required class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Log In</button>
+
+        <br>
+        <br>
+
+        {% if wrong %}
+
+            <span class="black"> Either the user doesn't exist or the password entered is incorrect </span>
+
+        {% endif %}
+
+    </form>
+
+{% endblock %}

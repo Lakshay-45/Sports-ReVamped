@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leaderboard
+{% endblock %}
+
+{% block main %}
+
+    <form action="leaderboard" method="post">
+
+        <div class="mb-3">
+
+            <select class="form-control mx-auto w-auto" name="sport">
+
+                <option selected disabled>Select a Sport</option>
+
+                {% for sports in data %}
+
+                    <option value="{{ sports.sport }}">{{ sports.sport | capitalize }}</option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <button class="btn btn-primary">Filter</button>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </form>
+
+    {% if not table %}
+
+        <h3 class="black">Total Leaderboard:</h3>
+
+        <br>
+        <br>
+
+        <table class="table table-hover black">
+
+            <thead>
+
+                <tr>
+
+                    <th>Rank</th>
+                    <th>Institute Name</th>
+                    <th>Total Score</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for ins in scores %}
+
+                    <tr>
+
+                        <td>{{ loop.index }}</td>
+                        <td>{{ins.insti_name | capitalize}}</td>
+                        <td>{{ins.total | capitalize}}</td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% endif %}
+
+    {% if table %}
+
+        <h3 class="black">Sport-wise Ranking:</h3>
+
+        <br>
+        <br>
+
+        <table class="table table-hover black">
+
+            <thead>
+
+                <tr>
+
+                    <th>Rank</th>
+                    <th>Institute Name</th>
+                    <th>Sport</th>
+                    <th>Score</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for ins in scores %}
+
+                    <tr>
+
+                        <td>{{ loop.index }}</td>
+                        <td>{{ins.insti_name | capitalize}}</td>
+                        <td>{{ins.sport | capitalize}}</td>
+                        <td>{{ins.score | capitalize}}</td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% endif %}
+
+{% endblock %}

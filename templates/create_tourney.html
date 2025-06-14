@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Tournament
+{% endblock %}
+
+{% block main %}
+
+    <h3 class="black">Create Tournament:</h3>
+    <br><br>
+
+    <form action="create_tourney" method="post">
+        <div class="mb-3">
+
+            <select class="form-control mx-auto w-auto" name="sport">
+                <option selected disabled>Select Sport</option>
+
+                {% for sport in sports %}
+
+                    <option value="{{ sport.sport }}">{{ sport.sport | capitalize }}</option>
+
+                {% endfor %}
+
+            </select>
+            <br>
+
+            <input autocomplete="off" required autofocus class="form-control mx-auto w-auto" id="location" name="location" placeholder="Location of Tournament" type="text">
+            <br>
+            <input autocomplete="off" required class="form-control mx-auto w-auto" id="name_tourney" name="name_tourney" placeholder="Name of Tournament" type="text">
+            <br>
+            <input autocomplete="off" required class="form-control mx-auto w-auto" id="prize" name="prize" placeholder="Enter Prize Pool" type="number">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+
+{% endblock %}

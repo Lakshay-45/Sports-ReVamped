@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Institute Admin Page
+{% endblock %}
+
+
+{% block main %}
+
+    <h3> Sports currently registered for : </h3>
+
+    {% if data %}
+
+        <table class="black">
+            <tbody>
+
+                    {% for sports in data %}
+                        <tr>
+
+                            <td>{{ sports.sport | capitalize }}</td>
+
+                        </tr>
+                    {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% else %}
+
+        <span class="black"> NONE </span>
+
+    {% endif %}
+
+{% endblock %}

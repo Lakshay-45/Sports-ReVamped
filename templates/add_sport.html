@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Sport
+{% endblock %}
+
+{% block main %}
+
+    <form action="/add_sport" method="post">
+
+        <h3 class="black"> Add Sport: </h3>
+
+        <div class="mb-3">
+            <input autocomplete="off" required autofocus class="form-control mx-auto w-auto" id="sport" name="sport" placeholder="Name of Sport" type="text">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Sport</button>
+
+        <br>
+        <br>
+
+        {% if exists %}
+
+            <span class="black"> The sport already exists </span>
+
+        {% endif %}
+
+    </form>
+
+{% endblock %}

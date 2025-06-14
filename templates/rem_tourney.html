@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove Tournament
+{% endblock %}
+
+{% block main %}
+
+    <h3 class="black">Remove Tournament:</h3>
+
+    <form action="rem_tourney" method="post">
+
+        <div class="mb-3">
+
+            <select class="form-control mx-auto w-auto" name="name_tourney">
+
+                <option selected disabled>Select Tournament</option>
+
+                {% for tourney in tourneys %}
+
+                    <option value="{{ tourney.name_of_tourney }}">{{ tourney.name_of_tourney | capitalize }}</option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Remove Tournament</button>
+    </form>
+
+{% endblock %}

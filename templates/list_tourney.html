@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    List of Live Tournaments
+{% endblock %}
+
+{% block main %}
+
+    <h3 class="black">Live Tournaments:</h3>
+
+    <br><br><br>
+
+    <form action="list_tourney" method="post">
+
+        <h6 class="black">Filter by:</h6>
+
+        <div class="mb-3">
+
+            <select class="form-control mx-auto w-auto" name="location">
+
+                <option selected disabled>Select Location</option>
+
+                {% for loc in locations %}
+
+                    <option value="{{ loc.location }}">{{ loc.location | capitalize }}</option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Filter</button>
+
+    </form>
+
+    <br><br><br><br>
+
+    <table class="table table-hover black">
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Organised By</th>
+                <th>Name of Tournament</th>
+                <th>Sport</th>
+                <th>Location</th>
+                <th>Prize Pool in $</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for info in data %}
+
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ info.insti_name | capitalize }}</td>
+                    <td>{{ info.name_of_tourney | capitalize }}</td>
+                    <td>{{ info.sport | capitalize }}</td>
+                    <td>{{ info.location | capitalize }}</td>
+                    <td>{{ info.prize_pool }}</td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

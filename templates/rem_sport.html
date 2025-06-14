@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove Sport
+{% endblock %}
+
+{% block main %}
+
+    <h3 class="black">Remove Sport:</h3>
+
+    <form action="/rem_sport" method="post">
+
+        <div class="mb-3">
+            <select class="form-control mx-auto w-auto"name="sport">
+                <option selected disabled>Select a Sport</option>
+
+                {% for sports in data %}
+
+                    <option value ="{{ sports.sport }}">{{ sports.sport | capitalize }}</optiion>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Remove Sport</button>
+
+        <br>
+        <br>
+
+        {% if not_sel %}
+
+            <span class="black">Please select a sport first</span>
+
+        {% endif %}
+
+    </form>
+
+{% endblock %}
